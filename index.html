@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selenium Test</title>
+</head>
+<body>
+
+    <h1 id="heading">Welcome to Selenium Testing</h1>
+
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <button id="btn" onclick="greet()">Click Me</button>
+
+    <p id="message"></p>
+
+    <script>
+        function greet() {
+            let name = document.getElementById("name").value;
+
+            if (name === "") {
+                document.getElementById("message").innerHTML =
+                    "Please enter your name";
+            } else {
+                document.getElementById("message").innerHTML =
+                    "Hello, " + name + "!";
+            }
+        }
+    </script>
+
+</body>
+</html>
