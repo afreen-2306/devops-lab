@@ -1,30 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Selenium Test</title>
+    <meta charset="UTF-8">
+    <title>Event Registration</title>
 </head>
+
 <body>
 
-    <h1 id="heading">Welcome to Selenium Testing</h1>
+    <h1 id="heading">Event Registration</h1>
 
-    <input type="text" id="name" placeholder="Enter your name">
+    <form id="registrationForm">
 
-    <button id="btn" onclick="greet()">Click Me</button>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <br><br>
+
+        <label for="event">Event:</label>
+
+        <select id="event" required>
+            <option value="">Select Event</option>
+            <option value="Day 1 Keynote">Day 1 Keynote</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Tech Talk">Tech Talk</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
 
     <p id="message"></p>
 
     <script>
-        function greet() {
-            let name = document.getElementById("name").value;
+        document.getElementById("registrationForm")
+            .addEventListener("submit", function(event) {
 
-            if (name === "") {
+                event.preventDefault();
+
+                let name = document.getElementById("name").value;
+                let selectedEvent =
+                    document.getElementById("event").value;
+
                 document.getElementById("message").innerHTML =
-                    "Please enter your name";
-            } else {
-                document.getElementById("message").innerHTML =
-                    "Hello, " + name + "!";
-            }
-        }
+                    "Registration successful!<br>" +
+                    "Welcome " + name +
+                    "<br>Event: " + selectedEvent;
+            });
     </script>
 
 </body>
